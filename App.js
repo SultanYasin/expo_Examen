@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 import HomeScreen from "./screen/HomeScreen";
 
 export default function App() {
 
   const [textInputValue, setTextInputValue] = useState("")
-  const [index, setIndex] = useState([])
+  const [exercises, setExercises] = useState([])
 
   const handleTextChange = (text) => {
     setTextInputValue(text)
@@ -14,14 +14,23 @@ export default function App() {
   };
 
   useEffect(() => {
-    console.log(index)
-  }, [index])
+    console.log(exercises)
+  }, [exercises])
   
 
 const handleAdd = () => {
-  setIndex(prev => prev.concat(textInputValue + " \n "))
+  setExercises(prev => [...prev, textInputValue])
+  //setExercises(prev => prev.concat(textInputValue + " \n "))
   setTextInputValue("")
   
+}
+
+const _renderItems = ({item: exercise}) => {
+  return( <View>
+
+   <span> <Text> {exercise} </Text></span>
+  </View>
+  )
 }
 
   return (
@@ -33,6 +42,13 @@ const handleAdd = () => {
         value={textInputValue}
       />
       <Button title="Add" onPress={handleAdd}/>
+
+      <FlatList 
+        data={exercises}
+        renderItem={_renderItems}/* a function to render the items that I wanna show  */
+        keyExtractor = {(exercise, index) => index}
+        
+      />
     </View>
   );
 }
@@ -40,7 +56,7 @@ const handleAdd = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#CD853F",
     alignItems: "center",
     color: "silver",
   },
