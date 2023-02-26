@@ -1,16 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import {
-  Button,
-  Dimensions,
-  FlatList,
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+import {Dimensions,FlatList,ImageBackground,Pressable,StyleSheet,Text,TextInput,View,
 } from "react-native";
 import HomeScreen from "./screen/HomeScreen";
 
