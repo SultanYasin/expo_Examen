@@ -1,66 +1,82 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { Button, Dimensions, FlatList, ImageBackground, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  Dimensions,
+  FlatList,
+  ImageBackground,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import HomeScreen from "./screen/HomeScreen";
 
 export default function App() {
-
-  const [textInputValue, setTextInputValue] = useState("")
-  const [exercises, setExercises] = useState([])
+  const [textInputValue, setTextInputValue] = useState("");
+  const [exercises, setExercises] = useState([]);
 
   const handleTextChange = (text) => {
-    setTextInputValue(text)
-    
+    setTextInputValue(text);
   };
 
   useEffect(() => {
-    console.log(exercises)
-  }, [exercises])
-  
+    console.log(exercises);
+  }, [exercises]);
 
-const handleAdd = () => {
-  setExercises(prev => [...prev, textInputValue])
-  //setExercises(prev => prev.concat(textInputValue + " \n "))
-  setTextInputValue("")
-  
-}
+  const handleAdd = () => {
+    setExercises((prev) => [...prev, textInputValue]);
+    //setExercises(prev => prev.concat(textInputValue + " \n "))
+    setTextInputValue("");
+  };
 
-const handleChangeItem = () =>{
-  console.log("handleChange has been clicked on : " + new Date().toISOString().slice(0 , 10))
+  const handleChangeItem = () => {
+    console.log(
+      "handleChange has been clicked on : " +
+        new Date().toISOString().slice(0, 10)
+    );
+  };
 
-}
-
-const _renderItems = ({item: exercise}) => {
-  return( <View   >
-
-    <Text onPress={handleChangeItem} > {exercise} </Text>
-    <Text> {"______________________"} </Text>
-  </View>
-  )
-}
+  const _renderItems = ({ item: exercise }) => {
+    return (
+      <View>
+        <Text onPress={handleChangeItem}> {exercise} </Text>
+        <Text> {"______________________"} </Text>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require("./assets/2.jpg")} resizeMode="cover" style={styles.bgImg}  >
-      <Text style={styles.title}>Add your daily exercise program</Text>
-      <TextInput
-        onChangeText={handleTextChange}
-        style={styles.textInput}
-        value={textInputValue}
-      />
+      <ImageBackground
+        source={require("./assets/2.jpg")}
+        resizeMode="cover"
+        style={styles.bgImg}
+      >
+        <Text style={styles.title}>Add your daily exercise program</Text>
+        <TextInput
+          onChangeText={handleTextChange}
+          style={styles.textInput}
+          value={textInputValue}
+        />
 
-       <Pressable onPress={handleAdd}  style={({pressed}) => [styles.btn, {opacity: pressed ? 0.5 : 1.0 }] } >
-          <Text style={styles.btnTxt} >Add</Text>
-        </Pressable> 
+        <Pressable
+          onPress={handleAdd}
+          style={({ pressed }) => [
+            styles.btn,
+            { opacity: pressed ? 0.5 : 1.0 },
+          ]}
+        >
+          <Text style={styles.btnTxt}>Add</Text>
+        </Pressable>
 
-    
-
-      <FlatList 
-        data={exercises}
-        renderItem={_renderItems}/* a function to render the items that I wanna show  */
-        keyExtractor = {(exercise, index) => index}
-        
-      />
+        <FlatList
+          data={exercises}
+          renderItem={_renderItems} /* a function to render the items that I wanna show  */
+          keyExtractor={(exercise, index) => index}
+        />
       </ImageBackground>
     </View>
   );
@@ -89,20 +105,16 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width,
   },
-  btn:{
-    color:"white",
+  btn: {
+    color: "white",
     backgroundColor: "dodgerblue",
-    marginHorizontal:10,    
-    borderRadius:8,  
-    height:40,
-    
+    marginHorizontal: 10,
+    borderRadius: 8,
+    height: 40,
   },
   btnTxt: {
-    fontSize:30,
-    color:"white",
-    textAlign:"center",
-
-  }
-
-
+    fontSize: 30,
+    color: "white",
+    textAlign: "center",
+  },
 });
