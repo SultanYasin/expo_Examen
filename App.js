@@ -18,7 +18,7 @@ export default function App() {
 
   const handleAdd = () => {
     setExercises((prev) => [...prev, textInputValue]);
-    //setExercises(prev => prev.concat(textInputValue + " \n "))
+    //setExercises(prev => prev.concat(textInputValue + " \n "))dfg
     setTextInputValue("");
   };
 
