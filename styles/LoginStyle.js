@@ -8,6 +8,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width,
+  
     
   },
 
@@ -17,6 +18,8 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#000000",
     opacity: 0.8,
+   
+    padding:18
   },
 
   lightText: {

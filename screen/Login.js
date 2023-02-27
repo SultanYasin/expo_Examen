@@ -1,11 +1,15 @@
-
-
 import { Text, TextInput, View } from "react-native";
-import React, { Component } from "react";
+import React, { useState } from "react";
 import LoginStyle from "../styles/LoginStyle";
 
-export class Login extends Component {
-  render() {
+export default function Login() {
+
+  
+  let [errorMessage, setErrorMessage] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  let [username, setUsername] = useState("");
+ 
     return (
       <View style={LoginStyle.container}>
         <View style={LoginStyle.backgroundCover}>
@@ -13,22 +17,29 @@ export class Login extends Component {
           <TextInput
             placeholder="Username"
             placeholderTextColor="whitesmoke"
+            value={username}
+            onChangeText={setUsername}
             style={[LoginStyle.lightText, LoginStyle.textInput, LoginStyle.lightTextInput]}
           />
           <TextInput
             placeholder="Password"
             placeholderTextColor="whitesmoke"
+            value={password}
+            secureTextEntry={true}
+            onChangeText={setPassword}
             style={[LoginStyle.lightText, LoginStyle.textInput, LoginStyle.lightTextInput]}
           />
+
+          <Text style={LoginStyle.lightText} >Don't you have an account? Signup</Text>
         </View>
       </View>
     );
   }
-}
 
-export default Login;
-/*
- import LoginStyle from "../styles/LoginStyle";
+
+
+
+/* import LoginStyle from "../styles/LoginStyle";
 import React, { useState } from "react";
 import {
   Avatar,
@@ -153,115 +164,4 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-import {
-  Text,
-  View,
-  TextInput,
-  ImageBackground,
-  Button,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
-
-import InlineTextButton from "../components/InlineTextButton";
-import React from "react";
-import { auth } from "../firebase";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import LoginStyle from "../styles/LoginStyle";
-
-export default function Login({ navigation }) {
-  const background = require("../assets/background.jpg");
-
-  if (auth.currentUser) {
-    navigation.navigate("ToDo");
-  } else {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigation.navigate("ToDo");
-      }
-    });
-  }
-
-  let [errorMessage, setErrorMessage] = React.useState("");
-  let [email, setEmail] = React.useState("");
-  let [password, setPassword] = React.useState("");
-
-  let login = () => {
-    if (email !== "" && password !== "") {
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          navigation.navigate("ToDo", { user: userCredential.user });
-          setErrorMessage("");
-          setEmail("");
-          setPassword("");
-        })
-        .catch((error) => {
-          setErrorMessage(error.message);
-        });
-    } else {
-      setErrorMessage("Please enter an email and password");
-    }
-  };
-
-  return (
-    <ImageBackground style={LoginStyle.imageContainer} source={background}>
-      <KeyboardAvoidingView
-        style={LoginStyle.backgroundCover}
-        behavior={Platform.OS === "ios" ? "padding" : null}
-        keyboardVerticalOffset={60}
-      >
-        <Text style={[LoginStyle.lightText, LoginStyle.header]}>Login</Text>
-        <Text style={LoginStyle.errorText}>{errorMessage}</Text>
-        <TextInput
-          style={[
-            LoginStyle.textInput,
-            LoginStyle.lightTextInput,
-            LoginStyle.lightText,
-          ]}
-          placeholder="Email"
-          placeholderTextColor="#BEBEBE"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={[
-            LoginStyle.textInput,
-            LoginStyle.lightTextInput,
-            LoginStyle.lightText,
-          ]}
-          placeholder="Password"
-          placeholderTextColor="#BEBEBE"
-          secureTextEntry={true}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <View style={[LoginStyle.rowContainer, LoginStyle.topMargin]}>
-          <Text style={LoginStyle.lightText}>Don't have an account? </Text>
-          <InlineTextButton
-            text="Sign Up"
-            onPress={() => navigation.navigate("SignUp")}
-          />
-        </View>
-        <View style={[LoginStyle.rowContainer, LoginStyle.bottomMargin]}>
-          <Text style={LoginStyle.lightText}>Forgotten your password? </Text>
-          <InlineTextButton
-            text="Reset"
-            onPress={() => navigation.navigate("ResetPassword")}
-          />
-        </View>
-        <Button title="Login" onPress={login} color="#f7b267" />
-      </KeyboardAvoidingView>
-    </ImageBackground>
-  );
-}
  */
