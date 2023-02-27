@@ -51,4 +51,11 @@ export default StyleSheet.create({
     color: "#87F1FF",
     opacity: 0.6,
   },
+  rowContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "stretch",
+    marginVertical: 4,
+  },
 });

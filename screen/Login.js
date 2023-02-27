@@ -1,6 +1,7 @@
 import { Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import LoginStyle from "../styles/LoginStyle";
+import InlineTextButton from "../components/InlineTextButton";
 
 export default function Login() {
 
@@ -29,8 +30,10 @@ export default function Login() {
             onChangeText={setPassword}
             style={[LoginStyle.lightText, LoginStyle.textInput, LoginStyle.lightTextInput]}
           />
-
-          <Text style={LoginStyle.lightText} >Don't you have an account? Signup</Text>
+          <View style={LoginStyle.rowContainer} >
+          <Text style={LoginStyle.lightText} >Don't you have an account? </Text>
+          <InlineTextButton text="Sign up" /> 
+          </View>
         </View>
       </View>
     );
