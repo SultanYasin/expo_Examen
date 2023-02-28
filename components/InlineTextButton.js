@@ -11,7 +11,7 @@ export default function InlineTextButton(props) {
     <Pressable onPress={props.onPress}>
       {({ pressed }) => (
         <Text 
-          style={[pressed ? LoginStyle.pressedInlineTextButton : LoginStyle.inlineTextButton, style]}>
+          style={[pressed ? LoginStyle.pressedInlineTextButton : LoginStyle.inlineTextButton, style, ]}>
             {props.text}
         </Text>
       )}
