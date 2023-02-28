@@ -1,5 +1,5 @@
 import { Text, View, TextInput, ImageBackground, Button, KeyboardAvoidingView, Platform } from 'react-native';
-import AppStyles from '../styles/AppStyles';
+import LoginStyle from '../styles/LoginStyle';
 import InlineTextButton from '../components/InlineTextButton';
 import React from 'react';
 import { auth } from "../firebase";
@@ -40,32 +40,32 @@ export default function Login({ navigation }) {
   }
 
   return (
-    <ImageBackground style={AppStyles.imageContainer} source={background}>
+    <ImageBackground style={LoginStyle.imageContainer} source={background}>
       <KeyboardAvoidingView 
-        style={AppStyles.backgroundCover} 
+        style={LoginStyle.backgroundCover} 
         behavior={Platform.OS === "ios" ? "padding" : null}
         keyboardVerticalOffset={60}>
-        <Text style={[AppStyles.lightText, AppStyles.header]}>Login</Text>
-        <Text style={AppStyles.errorText}>{errorMessage}</Text>
+        <Text style={[LoginStyle.lightText, LoginStyle.header]}>Login</Text>
+        <Text style={LoginStyle.errorText}>{errorMessage}</Text>
         <TextInput 
-          style={[AppStyles.textInput, AppStyles.lightTextInput, AppStyles.lightText]} 
+          style={[LoginStyle.textInput, LoginStyle.lightTextInput, LoginStyle.lightText]} 
           placeholder='Email' 
           placeholderTextColor="#BEBEBE"
           value={email}
           onChangeText={setEmail} />
         <TextInput 
-          style={[AppStyles.textInput, AppStyles.lightTextInput, AppStyles.lightText]} 
+          style={[LoginStyle.textInput, LoginStyle.lightTextInput, LoginStyle.lightText]} 
           placeholder='Password' 
           placeholderTextColor="#BEBEBE" 
           secureTextEntry={true} 
           value={password} 
           onChangeText={setPassword} />
-        <View style={[AppStyles.rowContainer, AppStyles.topMargin]}>
-          <Text style={AppStyles.lightText}>Don't have an account? </Text>
+        <View style={[LoginStyle.rowContainer, LoginStyle.topMargin]}>
+          <Text style={LoginStyle.lightText}>Don't have an account? </Text>
           <InlineTextButton text="Sign Up" onPress={() => navigation.navigate("SignUp")} />
         </View>
-        <View style={[AppStyles.rowContainer, AppStyles.bottomMargin]}>
-          <Text style={AppStyles.lightText}>Forgotten your password? </Text>
+        <View style={[LoginStyle.rowContainer, LoginStyle.bottomMargin]}>
+          <Text style={LoginStyle.lightText}>Forgotten your password? </Text>
           <InlineTextButton text="Reset" onPress={() => navigation.navigate("ResetPassword")} />
         </View>
         <Button title="Login" onPress={login} color="#f7b267" />

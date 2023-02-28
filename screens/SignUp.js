@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import AppStyles from "../styles/AppStyles";
+import LoginStyle from "../styles/LoginStyle";
 import InlineTextButton from "../components/InlineTextButton";
 import React from "react";
 import { auth } from "../firebase";
@@ -48,19 +48,19 @@ export default function SignUp({ navigation }) {
   };
 
   return (
-    <ImageBackground style={AppStyles.imageContainer} source={background}>
+    <ImageBackground style={LoginStyle.imageContainer} source={background}>
       <KeyboardAvoidingView
-        style={AppStyles.backgroundCover}
+        style={LoginStyle.backgroundCover}
         behavior={Platform.OS === "ios" ? "padding" : null}
         keyboardVerticalOffset={60}
       >
-        <Text style={[AppStyles.lightText, AppStyles.header]}>Sign Up</Text>
-        <Text style={[AppStyles.errorText]}>{validationMessage}</Text>
+        <Text style={[LoginStyle.lightText, LoginStyle.header]}>Sign Up</Text>
+        <Text style={[LoginStyle.errorText]}>{validationMessage}</Text>
         <TextInput
           style={[
-            AppStyles.textInput,
-            AppStyles.lightTextInput,
-            AppStyles.lightText,
+            LoginStyle.textInput,
+            LoginStyle.lightTextInput,
+            LoginStyle.lightText,
           ]}
           placeholder="Email"
           placeholderTextColor="#BEBEBE"
@@ -69,9 +69,9 @@ export default function SignUp({ navigation }) {
         />
         <TextInput
           style={[
-            AppStyles.textInput,
-            AppStyles.lightTextInput,
-            AppStyles.lightText,
+            LoginStyle.textInput,
+            LoginStyle.lightTextInput,
+            LoginStyle.lightText,
           ]}
           placeholder="Password"
           placeholderTextColor="#BEBEBE"
@@ -83,9 +83,9 @@ export default function SignUp({ navigation }) {
         />
         <TextInput
           style={[
-            AppStyles.textInput,
-            AppStyles.lightTextInput,
-            AppStyles.lightText,
+            LoginStyle.textInput,
+            LoginStyle.lightTextInput,
+            LoginStyle.lightText,
           ]}
           placeholder="Confirm Password"
           placeholderTextColor="#BEBEBE"
@@ -95,8 +95,8 @@ export default function SignUp({ navigation }) {
             validateAndSet(value, password, setConfirmPassword)
           }
         />
-        <View style={[AppStyles.rowContainer, AppStyles.topMargin]}>
-          <Text style={AppStyles.lightText}>Already have an account? </Text>
+        <View style={[LoginStyle.rowContainer, LoginStyle.topMargin]}>
+          <Text style={LoginStyle.lightText}>Already have an account? </Text>
           <InlineTextButton
             text="Login"
             onPress={() => navigation.popToTop()}
