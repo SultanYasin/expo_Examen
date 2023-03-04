@@ -2,7 +2,20 @@ import React, {useState, useEffect} from "react";
 import { View, Text, ImageBackground, TextInput, Pressable, FlatList, } from "react-native";
 import DailyExercisesStyle from "../styles/DailyExercisesStyle";
 
-export default function DailyExercises() {
+export default function DailyExercises({ navigation, route }) {
+
+  return(
+    <View style={DailyExercisesStyle.container}>
+<Text style={DailyExercisesStyle.title}>Add your daily exercise program</Text>
+<Text >{JSON.stringify(route.params.user)} </Text> {/* this is how to get the returned auth credentials */}
+
+    </View>
+  )
+
+}
+
+
+/* 
   const [textInputValue, setTextInputValue] = useState("");
   const [exercises, setExercises] = useState([]);
 
@@ -64,10 +77,9 @@ export default function DailyExercises() {
           data={exercises}
           renderItem={
             _renderItems
-          } /* a function to render the items that I wanna show  */
+          } // a function to render the items that I wanna show  
           keyExtractor={(exercise, index) => index}
         />
       </ImageBackground>
     </View>
-  );
-}
+  ); */

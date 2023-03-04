@@ -6,15 +6,13 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 export default function Login({ navigation }) {
-  const background = require("../assets/background.jpg");
+  const background = require("../assets/2.jpg");
 
   if (auth.currentUser) {
-    navigation.navigate("ToDo");
+    navigation.navigate("DailyExercises");
   } else {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigation.navigate("ToDo");
-      }
+      if (user) { navigation.navigate("DailyExercises"); }
     });
   }
 
@@ -26,7 +24,7 @@ export default function Login({ navigation }) {
     if (email !== "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          navigation.navigate("ToDo", { user: userCredential.user });
+          navigation.navigate("DailyExercises", { user: userCredential.user });
           setErrorMessage("");
           setEmail("");
           setPassword("");

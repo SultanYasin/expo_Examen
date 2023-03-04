@@ -11,13 +11,10 @@ import LoginStyle from "../styles/LoginStyle";
 import InlineTextButton from "../components/InlineTextButton";
 import React from "react";
 import { auth } from "../firebase";
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
+import {createUserWithEmailAndPassword,sendEmailVerification,} from "firebase/auth";
 
 export default function SignUp({ navigation }) {
-  const background = require("../assets/background.jpg");
+  const background = require("../assets/2.jpg");
 
   let [email, setEmail] = React.useState("");
   let [password, setPassword] = React.useState("");
@@ -25,12 +22,9 @@ export default function SignUp({ navigation }) {
   let [validationMessage, setValidationMessage] = React.useState("");
 
   let validateAndSet = (value, valueToCompare, setValue) => {
-    if (value !== valueToCompare) {
-      setValidationMessage("Passwords do not match.");
-    } else {
-      setValidationMessage("");
-    }
-
+    if (value !== valueToCompare) setValidationMessage("Passwords do not match.");
+    else setValidationMessage("");
+    
     setValue(value);
   };
 
@@ -39,7 +33,7 @@ export default function SignUp({ navigation }) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           sendEmailVerification(auth.currentUser);
-          navigation.navigate("ToDo", { user: userCredential.user });
+          navigation.navigate("DailyExercises", { user: userCredential.user });
         })
         .catch((error) => {
           setValidationMessage(error.message);

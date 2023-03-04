@@ -6,7 +6,7 @@ import { auth } from "../firebase";
 import { sendPasswordResetEmail } from 'firebase/auth';
 
 export default function ResetPassword({ navigation }) {
-  const background = require("../assets/background.jpg");
+  const background = require("../assets/2.jpg");
 
   let [email, setEmail] = React.useState("");
   let [errorMessage, setErrorMessage] = React.useState("");
