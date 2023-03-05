@@ -1,3 +1,6 @@
+//"DailyExercises-LoginStyle"
+
+
 import { Text, View, TextInput, ImageBackground, Button, KeyboardAvoidingView, Platform } from 'react-native';
 import LoginStyle from '../styles/LoginStyle';
 import InlineTextButton from '../components/InlineTextButton';
@@ -12,7 +15,9 @@ export default function Login({ navigation }) {
     navigation.navigate("DailyExercises");
   } else {
     onAuthStateChanged(auth, (user) => {
-      if (user) { navigation.navigate("DailyExercises"); }
+      if (user) {
+        navigation.navigate("DailyExercises");
+      }
     });
   }
 
@@ -71,4 +76,5 @@ export default function Login({ navigation }) {
     </ImageBackground>
   );
 }
+
 

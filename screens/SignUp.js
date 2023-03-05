@@ -1,11 +1,4 @@
-import {
-  Text,
-  View,
-  TextInput,
-  ImageBackground,
-  Button,
-  KeyboardAvoidingView,
-  Platform,
+import {Text,View,TextInput,ImageBackground,Button,KeyboardAvoidingView,Platform,
 } from "react-native";
 import LoginStyle from "../styles/LoginStyle";
 import InlineTextButton from "../components/InlineTextButton";
